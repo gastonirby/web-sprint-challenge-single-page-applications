@@ -2,24 +2,11 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import * as yup from 'yup';
 import axios from 'axios';
+import schema from './validation/formSchema'
 
 
 
-const yupForm = yup.object().shape({
-    name: yup.string().required('name is required').min(2, 'name must be at least 2 characters'),
-    sauce: yup.string().oneOf(['tomato', 'bbq', 'alfredo'], 'Pick One'),
-    size: yup.string().oneOf(['Small', 'Medium', 'Large', 'Extra Large'], 'You Must Choose A Size'),
-    special: yup.string(),
-    pepperoni: yup.boolean(),
-    sausage: yup.boolean(),
-    ham: yup.boolean(),
-    bacon: yup.boolean(),
-    pineapple: yup.boolean(),
-    mushroom: yup.boolean(),
-    greenPepper: yup.boolean(),
-    jalapeno: yup.boolean(),
-    instructions: yup.string(),
-})
+
 
 const defaultVal = {
     name: "",
@@ -33,7 +20,7 @@ const defaultVal = {
     pineapple: false,
     mushroom: false,
     greenPepper: false,
-    jalapeno: false,
+    olive: false,
     instructions: "",
 }
 
@@ -59,21 +46,20 @@ function Form() {
     })
 
     useEffect(() => {
-        yupForm.isValid(form)
+        schema.isValid(form)
             .then(valid => {
             });
     }, [form]);
 
 
     const validate = (e) => {
-        yup.reach(yupForm, e.target.name)
+        yup.reach(schema, e.target.name)
             .validate(e.target.value)
             .then(valid => {
                 setError({
                     ...errorState,
                     [e.target.name]: ""
                 })
-
             })
             .catch(error => {
                 console.log(error.errors)
@@ -102,7 +88,7 @@ function Form() {
 
     return (
         <div>
-            <h1>Build Your Own:</h1>
+            <h2>Build Your Own:</h2>
 
             <form onSubmit={formSubmit} id="pizza-form">
                 <label htmlFor="name">Your Name: </label>
@@ -118,7 +104,8 @@ function Form() {
                 {errorState.name.length > 1 ? <p className="error">{errorState.name}</p> : null}
 
 
-                <p><label htmlFor="sauce">Select a Sauce:</label></p>
+                <div>
+                <h3>Select a Sauce:</h3>
                 <input
                     type="radio"
                     value="tomato"
@@ -140,22 +127,23 @@ function Form() {
                     checked={form.sauce === "alfredo"}
                     onChange={inputChange}
                 /> Alfredo
+                </div>
 
-                <p><label htmlFor="size-dropdown"></label>
+                <div className="size-dropdown">
                     <select 
                         id="size-dropdown" 
                         name="size" 
                         value={form.size} 
                         onChange={inputChange}
-                        >
+                    >
 
                         <option>Select a Size</option>
                         <option value="Small">Small</option>
                         <option value="Medium">Medium</option>
                         <option value="Large">Large</option>
-                
                     </select>
-                </p>
+                </div>
+
                 <p className="error">{errorState.size}</p>
 
                 <label className="toppings">Pick Your Toppings:</label>
@@ -209,11 +197,11 @@ function Form() {
                             type="checkbox"
                             checked={form.olive}
                             onChange={inputChange}
-                            name="olive"
+                            name="olive" 
                         />Olives
                     </div>
 
-                <p><label htmlFor="instructions">Special Instructions: </label>
+                <p><label className="instructions">Special Instructions: </label>
                     <textarea
                         name="instructions"
                         id="special-text"
