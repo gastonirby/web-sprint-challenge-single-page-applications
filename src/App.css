@@ -1,10 +1,154 @@
-header {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+a{
+	text-decoration:none;
+	font-family: 'Open Sans', sans-serif;
+	color:#4f4f4f;}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-spacing: 0;
+}
+html{
+    font-size:62.5%;
+}
+body { 
+    font-size:1.6rem;
+    line-height:1.5;
+    font-family: 'Open Sans', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    max-width:100%;
+  /* put a border around everything to see where it stops and starts*/
+    /* border:3px solid red;  */
+
+}
+
+/*main content*/
+
+.form {
+  width: 100%;
+}
+
+h1 {
+  margin: 3%;
+  text-align: left;
+  width: 50%;
+}
+nav {
+  width: 40%;
+  text-align: right;
+  /* border:3px solid red;  */
+}
+button {
+	padding:0.5%;
+	color:black;
+	width: 20%;
+  height: 30px;
+	letter-spacing:2px;
+	border-radius:1px;
+	transition: 1.6s;
+  font-size: auto;
+}
+
+button:hover{
+	background-color: black;
+	color:white;
+}
+
+img {
+  width: 100%;
+}
+
+.homepage {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: wheat;
+  width: 100%;
+}
+
+header {
+  color: wheat;
+  background-color: #282c34;
+  width: 100%;
+  border-bottom:1px solid wheat ;
+}
+
+.Customized {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 2px;;
+}
+
+.name, .size-dropdown {
+  width:45%;
+  padding: 1%;
+  max-width:45%;
+
+}
+
+.Sauce, .toppings {
+  background-color: white;
+  max-width:100%;
+  padding: 1%;
+  color: gray;
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.instructions {
+  display:flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  margin:3%;
+}
+#order-button {
+  margin-bottom: 5%;
+  width:auto;
+  padding:1%;
 }

@@ -79,134 +79,143 @@ export default function Form() {
     };
 
     return (
-        <div>
-            <h2>Build Your Own:</h2>
+        <div className="form">
+            <header>
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="pizza" />
+                <h2>Build Your Own</h2>
+            </header>
 
             <form onSubmit={formSubmit} id="pizza-form">
-                <label htmlFor="name">Your Name: </label>
-                <div className="error">{error.name}</div>
-                <input
-                    id="name-input"
-                    name="name"
-                    type="text"
-                    placeholder="Name"
-                    value={form.name}
-                    onChange={inputChange}
-                />
-        
-                <div>
-                <h3>Select a Sauce:</h3>
-                <input
-                    type="radio"
-                    value="tomato"
-                    name="sauce"
-                    checked={form.sauce === "tomato"}
-                    onChange={inputChange}
-                /> Tomato
-                <input
-                    type="radio"
-                    value="bbq"
-                    name="sauce"
-                    checked={form.sauce === "bbq"}
-                    onChange={inputChange}
-                /> BBQ
-                <input
-                    type="radio"
-                    value="alfredo"
-                    name="sauce"
-                    checked={form.sauce === "alfredo"}
-                    onChange={inputChange}
-                /> Alfredo
-                </div>
-
-                <div className="size-dropdown">
-                <div className="error">{error.size}</div>
-                    <select 
-                        id="size-dropdown" 
-                        name="size" 
-                        value={form.size} 
-                        onChange={inputChange}
-                    >
-
-                        <option>Select a Size</option>
-                        <option value="Small">Small</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Large">Large</option>
-                    </select>
-                </div>
-
-                <label className="toppings">Pick Your Toppings:</label>
-                    <div>
+                <section className="Customized">
+                    <div className="name">
+                        <label>Your Name: </label>
+                        <div className="error">{error.name}</div>
                         <input
-                            id="toppings"
-                            type="checkbox"
-                            checked={form.pepperoni}
+                            id="name-input"
+                            name="name"
+                            type="text"
+                            placeholder="Name"
+                            value={form.name}
                             onChange={inputChange}
-                            name="pepperoni"
-                        />Pepperoni
-                        <input
-                            id="toppings"
-                            type="checkbox"
-                            checked={form.sausage}
-                            onChange={inputChange}
-                            name="sausage"
-                        />Sausage
-                        <input
-                            id="toppings"
-                            type="checkbox"
-                            checked={form.ham}
-                            onChange={inputChange}
-                            name="ham"
-                        />Ham
+                        />
                     </div>
-                    <div>
+            
+                    <div className="Sauce">
+                        <h3>Select a Sauce:</h3>
                         <input
-                            id="toppings"
-                            type="checkbox"
-                            checked={form.pineapple}
+                            type="radio"
+                            value="tomato"
+                            name="sauce"
+                            checked={form.sauce === "tomato"}
                             onChange={inputChange}
-                            name="pineapple"
-                        />Pineapple
+                        /> Tomato
                         <input
-                            id="toppings"
-                            type="checkbox"
-                            checked={form.mushroom}
+                            type="radio"
+                            value="bbq"
+                            name="sauce"
+                            checked={form.sauce === "bbq"}
                             onChange={inputChange}
-                            name="mushroom"
-                        />Mushroom
+                        /> BBQ
                         <input
-                            id="toppings"
-                            type="checkbox"
-                            checked={form.greenPepper}
+                            type="radio"
+                            value="alfredo"
+                            name="sauce"
+                            checked={form.sauce === "alfredo"}
                             onChange={inputChange}
-                            name="greenPepper"
-                        />Green Peppers
-                        <input
-                            id="toppings"
-                            type="checkbox"
-                            checked={form.olive}
-                            onChange={inputChange}
-                            name="olive" 
-                        />Olives
+                        /> Alfredo
                     </div>
 
-                <p><label className="instructions">Special Instructions: </label>
-                    <textarea
-                        name="instructions"
-                        id="special-text"
-                        placeholder="Instructions Here"
-                        value={form.instructions}
-                        onChange={inputChange}
-                    />
-                </p>
+                    <div className="size-dropdown">
+                        <div className="error">{error.size}</div>
+                        <label>Select a Size</label>
+                        <br/>
+                        <select 
+                            id="size-dropdown" 
+                            name="size" 
+                            value={form.size} 
+                            onChange={inputChange}
+                        >
 
-                <button 
-                    name="order-button" 
-                    id="order-button" 
-                    type="submit"
-                    >
-                    Submit Order
-                </button>
+                            <option>Select a Size</option>
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Large">Large</option>
+                        </select>
+                    </div>
+
+                    <div className="toppings">
+                        <label>Pick Your Toppings:</label>
+                                <input
+                                    id="toppings"
+                                    type="checkbox"
+                                    checked={form.pepperoni}
+                                    onChange={inputChange}
+                                    name="pepperoni"
+                                />Pepperoni
+                                <input
+                                    id="toppings"
+                                    type="checkbox"
+                                    checked={form.sausage}
+                                    onChange={inputChange}
+                                    name="sausage"
+                                />Sausage
+                                <input
+                                    id="toppings"
+                                    type="checkbox"
+                                    checked={form.ham}
+                                    onChange={inputChange}
+                                    name="ham"
+                                />Ham
+                                <input
+                                    id="toppings"
+                                    type="checkbox"
+                                    checked={form.pineapple}
+                                    onChange={inputChange}
+                                    name="pineapple"
+                                />Pineapple
+                                <input
+                                    id="toppings"
+                                    type="checkbox"
+                                    checked={form.mushroom}
+                                    onChange={inputChange}
+                                    name="mushroom"
+                                />Mushroom
+                                <input
+                                    id="toppings"
+                                    type="checkbox"
+                                    checked={form.greenPepper}
+                                    onChange={inputChange}
+                                    name="greenPepper"
+                                />Green Peppers
+                                <input
+                                    id="toppings"
+                                    type="checkbox"
+                                    checked={form.olive}
+                                    onChange={inputChange}
+                                    name="olive" 
+                                />Olives
+                        </div>
+                    </section>
+                <footer>
+                    <p className="instructions">
+                        <label>Special Instructions: </label>
+                        <textarea
+                            name="instructions"
+                            id="special-text"
+                            placeholder="Instructions Here"
+                            value={form.instructions}
+                            onChange={inputChange}
+                        />
+                    </p>
+
+                    <button 
+                        name="order-button" 
+                        id="order-button" 
+                        type="submit"
+                        >
+                        Submit Order
+                    </button>
+                </footer>
             </form>
         </div>
     );
