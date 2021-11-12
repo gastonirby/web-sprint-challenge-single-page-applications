@@ -4,11 +4,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import schema from './validation/formSchema'
 
-
-
-
-
-const defaultVal = {
+const initialFormVals = {
     name: "",
     sauce: "",
     size: "",
@@ -24,13 +20,9 @@ const defaultVal = {
     instructions: "",
 }
 
-function Form() {
-
-    const [isValid, setIsValid] = useState(true);
-
-    const [form, setForm] = useState(defaultVal);
-
-    const [errorState, setError] = useState({
+export default function Form() {
+    const [form, setForm] = useState(initialFormVals);
+    const [error, setError] = useState({
         name: "",
         sauce: "",
         size: "",
@@ -57,14 +49,14 @@ function Form() {
             .validate(e.target.value)
             .then(valid => {
                 setError({
-                    ...errorState,
+                    ...error,
                     [e.target.name]: ""
                 })
             })
             .catch(error => {
                 console.log(error.errors)
                 setError({
-                    ...errorState,
+                    ...error,
                     [e.target.name]: error.errors[0]
                 })
             })
@@ -83,7 +75,7 @@ function Form() {
         axios.post(`https://reqres.in/api/orders`, form)
             .then(res => { console.log('RES', res) })
             .catch(err => console.log(err.response));
-        setForm(defaultVal)
+        setForm(initialFormVals)
     };
 
     return (
@@ -92,6 +84,7 @@ function Form() {
 
             <form onSubmit={formSubmit} id="pizza-form">
                 <label htmlFor="name">Your Name: </label>
+                <div className="error">{error.name}</div>
                 <input
                     id="name-input"
                     name="name"
@@ -100,10 +93,7 @@ function Form() {
                     value={form.name}
                     onChange={inputChange}
                 />
-
-                {errorState.name.length > 1 ? <p className="error">{errorState.name}</p> : null}
-
-
+        
                 <div>
                 <h3>Select a Sauce:</h3>
                 <input
@@ -130,6 +120,7 @@ function Form() {
                 </div>
 
                 <div className="size-dropdown">
+                <div className="error">{error.size}</div>
                     <select 
                         id="size-dropdown" 
                         name="size" 
@@ -143,8 +134,6 @@ function Form() {
                         <option value="Large">Large</option>
                     </select>
                 </div>
-
-                <p className="error">{errorState.size}</p>
 
                 <label className="toppings">Pick Your Toppings:</label>
                     <div>
@@ -223,7 +212,4 @@ function Form() {
     );
 
 
-}
-
-
-export default Form;
+};

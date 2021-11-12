@@ -5,19 +5,29 @@ describe('Form App', () => {
         cy.visit('http://localhost:3001/pizza')
     })
 
-    it('text test', () => {
-        cy.get('textarea[name=instructions]')
-    .should('have.value', '')
-    .type('test that you can add text to the box')
-    .should('have.value', 'test that you can add text to the box')
+    it('sanity check', () => {
+        expect(1 + 2).to.equal(3);
+        expect(2 + 2).not.to.equal(5);
+        expect({}).not.to.equal({});
+        expect({}).to.eql({});
     })
 
-    it('select test', () => {
-        cy.get('input[id=toppings]').check()
+    const instructions = () => cy.get('textarea[name=instructions]');
+    const toppings = () => cy.get('input[id=toppings]');
+    const submit = () => cy.get('button[name=order-button]');
+    it('instructions test', () => {
+        instructions()
+            .should('have.value', '')
+            .type('test that you can add text to the box')
+            .should('have.value', 'test that you can add text to the box')
+    })
+
+    it('select mulitiple', () => {
+        toppings().check();
     })
 
     it('submit test', () => {
-        cy.get('button[name=order-button]').click()
+        submit().click();
     })
 
 })

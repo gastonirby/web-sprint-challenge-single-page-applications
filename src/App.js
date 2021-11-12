@@ -1,13 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-// import Home from "./Home";
 import Form from "./pizza";
 
-
-
 const App = () => {
-
- 
 
   return (
     <header className="homepage">
@@ -16,8 +11,7 @@ const App = () => {
         <BrowserRouter>
           <nav>
             <Link to="/"><button id="home-button">Home</button></Link>
-            {/* <Route path="/" /> */}
-            <Link to="/pizza"><button id="order-pizza">Order Pizza!</button></Link>
+            <Link to="/pizza"><button id="order-pizza">Place Your Order</button></Link>
           </nav>
           <Switch>
             <Route path="/pizza" component={Form} />
